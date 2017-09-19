@@ -7,11 +7,5 @@ from .models import Board
 
 def home(request):
     boards = Board.objects.all()
-    boards_names = list()
+    return render(request, 'home.html', {'boards': boards})
 
-    for board in boards:
-        boards_names.append(board.name)
-        boards_names.append(board.description)
-
-    response_html = '<br>'.join(boards_names)
-    return HttpResponse(response_html)
